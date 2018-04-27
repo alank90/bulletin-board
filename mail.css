@@ -1,0 +1,40 @@
+﻿
+table  {
+	border: ridge;
+	border-width: 9px;
+}   
+
+
+th {
+ strong { font-weight: bold; }
+ text-align: center;
+ font-size: 18px;
+ color: DarkBlue;
+ background-color:#B0C4DE;
+ text-decoration: underline;
+ cursor: default;
+ padding-left: 8px;
+ padding-right: 8px;
+ border-bottom-color: #000000;
+}
+
+/* Define a class to highlight Table rows on hover but not the Table Header row */
+tr:hover.first {
+ background-color: LightSkyBlue;
+}
+
+/* Shade Rows */
+tr:nth-child(even)		{ background-color:#B0C4DE; }
+tr:nth-child(odd)		{ background-color:#ADD8E6; }
+
+td{
+	font-size: 14px;
+	font: calibri;
+	border: outset;
+	border-color: #000000;
+	border-width: 2px;
+	padding-top: 7px;
+	padding-bottom: 2px;
+	padding-left: 8px;
+	padding-right: 8px;
+}

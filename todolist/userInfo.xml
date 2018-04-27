@@ -1,0 +1,59 @@
+<?xml version = "1.0" ?>
+<users>
+  <user>
+   <name>alan</name>
+   <password>alank</password>
+   <profile>Technology Consultant</profile>
+   <lists>
+    <list>alan</list>
+    <list>shs</list>
+    <list>scott</list> 
+    <list>odysseus</list>
+    <list>nestor</list>
+   </lists>
+  </user>
+  <user>
+  <name>shs</name>
+   <password>shs2015</password>
+   <profile>Technology Dept Todo List</profile>
+   <lists>
+    <list>shs</list>
+    <list>alan</list>
+   </lists>
+  </user>
+  <user>
+   <name>scott</name>
+   <password>nap</password>
+   <profile>Technology Consultant</profile>
+   <lists>
+    <list>scott</list>
+    <list>shs</list> 
+   </lists>
+  </user>
+  <user>
+   <name>nestor</name>
+   <password>cup</password>
+   <profile>King of Pylos, fought the centaurs</profile>
+ <lists>
+   <list>nestor</list>
+ </lists>
+ </user>
+ <user>
+   <name>odysseus</name>
+   <password>horsie</password>
+   <profile>Hero of the Iliad and Odyssey</profile>
+   <lists>
+    <list>odysseus</list>
+    <list>nestor</list>
+  </lists>
+ </user>
+ <user>
+   <name>test</name>
+   <password>test</password>
+   <profile>Hero of the Iliad and Odyssey</profile>
+   <lists>
+    <list>odysseus</list>
+    <list>nestor</list>
+      </lists>
+ </user>
+</users>

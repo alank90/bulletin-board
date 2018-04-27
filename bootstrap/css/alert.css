@@ -1,0 +1,136 @@
+/* ALERT-JS 1.5 CSS FILES */
+
+.notice {
+	position: absolute;
+    margin-top: 100px;
+	/*
+	margin-left: auto;
+	margin-right: auto;
+	*/
+	left: 35%;
+	right: 50%;
+	width: 30%;
+	color: black;
+	overflow: auto;
+    transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -webkit-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -moz-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -o-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -ms-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+	background-color: #ffffff;
+	border: 2px solid #575757;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+	-moz-box-shadow: 0px 0px 20px #52afff;
+	-webkit-box-shadow: 0px 0px 20px #52afff;
+	box-shadow: 0px 0px 20px #52afff;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	opacity: 0.91;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 91);
+	/*-ms-filter must come before filter*/
+	filter: alpha(opacity = 91);
+	/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+	/*All filters must be placed together*/
+
+}
+
+a.noticeclose {
+	position: fixed;
+	margin-left: 91%;
+	background-color: red;
+	border: 1px solid red;
+	color: black;
+	text-decoration: none;
+	font-family: Arial;
+	border-radius: 4px;
+}
+
+.noticeImportant {
+	position: absolute;
+    margin-top: 100px;
+	/*
+	margin-left: auto;
+	margin-right: auto;
+	*/
+	left: 35%;
+	right: 50%;
+	width: 30%;
+	color: black;
+	overflow: auto;
+    transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -webkit-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -moz-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -o-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -ms-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+	background-color: #ffffff;
+	border: 2px solid orange;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+	-moz-box-shadow: 0px 0px 20px red;
+	-webkit-box-shadow: 0px 0px 20px red;
+	box-shadow: 0px 0px 20px red;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	opacity: 0.91;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 91);
+	/*-ms-filter must come before filter*/
+	filter: alpha(opacity = 91);
+	/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+	/*All filters must be placed together*/
+
+}
+
+.noticeImportantStageTwo {
+	position: absolute;
+    margin-top: 100px;
+	/*
+	margin-left: auto;
+	margin-right: auto;
+	*/
+	left: 35%;
+	right: 50%;
+	width: 30%;
+	color: black;
+	overflow: auto;
+    transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -webkit-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -moz-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -o-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+    -ms-transform: rotate(4deg) scale(1) skew(1deg) translate(0px);
+	background-color: #ffffff;
+	border: 2px solid red;
+	-moz-border-radius: 4px;
+	-webkit-border-radius: 4px;
+	border-radius: 4px;
+	/*IE 7 AND 8 DO NOT SUPPORT BORDER RADIUS*/
+	-moz-box-shadow: 0px 0px 20px orange;
+	-webkit-box-shadow: 0px 0px 20px orange;
+	box-shadow: 0px 0px 20px orange;
+	/*IE 7 AND 8 DO NOT SUPPORT BLUR PROPERTY OF SHADOWS*/
+	opacity: 0.91;
+	-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity = 91);
+	/*-ms-filter must come before filter*/
+	filter: alpha(opacity = 91);
+	/*INNER ELEMENTS MUST NOT BREAK THIS ELEMENTS BOUNDARIES*/
+	/*All filters must be placed together*/
+
+}
+
+.highlight {
+	background-color: #0095FF;
+}
+
+.action {
+    transform: rotate(350deg) scale(1.099) skew(0deg) translate(3px);
+    -webkit-transform: rotate(350deg) scale(1.099) skew(0deg) translate(3px);
+    -moz-transform: rotate(350deg) scale(1.099) skew(0deg) translate(3px);
+    -o-transform: rotate(350deg) scale(1.099) skew(0deg) translate(3px);
+    -ms-transform: rotate(350deg) scale(1.099) skew(0deg) translate(3px);
+    border:dashed 15px #000000;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+}

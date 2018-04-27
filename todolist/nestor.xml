@@ -1,0 +1,23 @@
+<?xml version='1.0' ?>
+<list>
+ <name>nestor</name>
+ <openitems>
+  <item>
+   <number>1</number>
+    <contents>Greek figure....</contents>
+  </item></openitems>
+ <doneitems>
+  <item>
+   <number>3</number>
+    <contents>Test</contents>
+  </item>
+  <item>
+   <number>4</number>
+     <contents>Another Test Message</contents>
+  </item>
+  <item>
+    <number>2</number>
+     <contents>Dont know why</contents>
+  </item>
+ </doneitems>
+</list>

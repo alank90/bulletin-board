@@ -1,0 +1,7 @@
+HNEWS="10/20 • Follow up periods 2nd or 4th to install printer driver in Room 314 "
+HLINK="/bb/index.php"
+HNEWS="5/5 • Jodi Out of Building Today"
+HLINK="/bb/index.php"
+
+
+

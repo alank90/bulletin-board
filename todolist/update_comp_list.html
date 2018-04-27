@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Update Done List</title>
+
+
+<script>function clearDoneItems()  {
+
+    var xmlhttp = new XMLHttpRequest();
+    if (window.XMLHttpRequest)
+      {// code for IE7+, Firefox, Chrome, Opera, Safari
+       xmlhttp=new XMLHttpRequest();
+     } 
+    else {
+        // code for IE6, IE5
+       xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+     } 
+     xmlhttp.onreadystatechange=function()  {
+     if (xmlhttp.readyState==4 && xmlhttp.status==200) { 
+        document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+       }
+     }
+    user_name = "alan";
+    alert(user_name);
+    xmlhttp.open("POST","todolist/clear_done_items.php",true);
+    //xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    xmlhttp.send(user_name); 
+    //displayHomeInformation(user_name);
+
+}
+</script>
+</head>
+
+<body>
+<h2 id="contentSection">Content Section</h2>
+ <div id = "myDiv"></div>
+ 
+ <button onclick="clearDoneItems()">Clear Done Items List</button>
+
+</body>
+
+</html>

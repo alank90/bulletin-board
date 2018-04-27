@@ -1,0 +1,1259 @@
+<!-- sesion_start must come before anything else ---->
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<meta charset="utf-8">
+		<title>SHS Technology Board</title>
+		<meta name="generator" content="Bootply" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+		<!-- Todo list Style Sheet -->
+		<link rel="stylesheet" type="text/css" href="todolist/todo.css"/>
+
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<!--<link rel="stylesheet" href="bootstrap/css/alert.css"/>-->
+
+		<!--	[if lt IE 9]>
+		<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<link href="css/styles.css" rel="stylesheet">
+		<link href="assets/favicon.ico" rel="icon" type="image/x-icon" />
+
+		<!-- Todo list Style Sheet & JS -->
+		<link rel="stylesheet" type="text/css" href="todolist/todo.css"/>
+
+		<!-- Opengrid Files -->
+		<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css"/>
+
+		<link rel="stylesheet" href="grid.css" title="openJsGrid"/>
+		<script src="jquery.js" type="text/javascript"></script>
+		<script src="root.js"></script>
+		<script src="grid.js"></script>
+		<!-- End Opengrid -->
+
+		<!-- Responsive Calendar Files
+		<script src="js/jquery.js"></script>-->
+		<script src="js/responsive-calendar.js"></script>
+		<link href="css/responsive-calendar.css" rel="stylesheet" media="screen">
+
+		<!-- JQueryUI Files -->
+		<link rel="stylesheet" href="css/jquery-ui.css">
+		<script src="js/jquery-ui.min.js"></script>
+		<link rel="stylesheet" href="css/jquery-ui.theme.min.css">
+		<link rel="stylesheet" href="css/jquery-ui.structure.min.css">
+
+		<!-- End JQuery UI Files -->
+
+		<!-- JQuery Script for the About Menu pop-up modal dialog entry.
+		We set the modal to true.  -->
+
+		<script>
+			$(document).ready(function() {
+				$("#dialog").dialog({
+					autoOpen : false
+				});
+				$("#opener").click(function() {
+					$("#dialog").dialog("open");
+				});
+				$("#dialog").dialog({
+					modal : true
+				});
+				// Setter
+				$("#dialog").dialog("option", "modal", true);
+
+				$("#dialog").dialog({
+					buttons : [{
+						text : "Ok",
+						icons : {
+							primary : "ui-icon-gears"
+						},
+						click : function() {
+							$(this).dialog("close");
+						}
+						// Uncommenting the following line would hide the text,
+						// resulting in the label being used as a tooltip
+						//showText: false
+					}]
+				});
+
+				// Getter
+				var buttons = $("#dialog").dialog("option", "buttons");
+
+			});
+		</script>
+		<!-- End Pop-up Script -->
+
+		<!-- jQuery code for Teacher Schedule -->
+		<script language="javascript" type="text/javascript">
+			$(document).ready(function() {
+				$('#trigger').click(function() {
+					$("#schedulePDF").dialog({
+						height : 950,
+						width : 1275
+					});
+				});
+			});
+		</script>
+
+		<!-- End jQuery for Teacher Schedule -->
+
+		<!-- jQuery code for Room Usage -->
+		<script language="javascript" type="text/javascript">
+			$(document).ready(function() {
+				$("#trigger_rm_usage").click(function() {
+					$("#room_usage").dialog({
+						height : 950,
+						width : 1275
+					});
+				});
+			});
+		</script>
+
+		<!-- End jQuery for Room Usage -->
+
+		<!------------ OpenGrid Options------------------------------------------------------------>
+		<script type="text/javascript">
+			$(function() {
+				var $grid = $(".users").grid({
+					title : "Message Board",
+					page : 1,
+					showPager : true,
+					editing : true,
+					deleting : true,
+					nRowsShowing : 10,
+					width : 825,
+					rowNumbers : false,
+					checkboxes : false,
+					cellTypes : {
+						"hashBang" : function(value, columnOpts, grid) {
+							console.log(value, columnOpts, grid);
+							return {
+								cellClass : "",
+								cellValue : "/#!/" + value
+							}
+						}
+					}
+				}).on("loadComplete", function(e, grid) {
+					console.log("loadComplete", grid);
+				}).on("cellClick", function(e, $cell, rowData) {
+					//console.log("cell",$cell,rowData);
+				}).on("rowCheck", function(e, $checkbox, rowData) {
+					//console.log("rowCheck",$checkbox, rowData);
+				}).on("rowClick", function(e, $rows, rowData) {
+					//console.log("rowClick",$rows,rowData);
+				}).on("save", function(e, row, res) {
+					//console.log("save",row,res);
+				});
+
+			});
+		</script>
+
+		<!-- End OpenGrid Options------------------------------------------------------->
+
+		<!-- JQuery Hover code for School Schedule.------------------------------------->
+		<script type="text/javascript">
+			$(document).ready(function() {
+				// Handler for .ready() called.
+
+				$(function() {
+					$('#pic').hover(function() {
+						$(this).animate({
+							width : "195%"
+						}, 500)
+					}, function() {
+						$(this).animate({
+							width : "85%"
+						}, 500);
+					});
+				});
+			});
+		</script>
+		<!-- End JQuery Hover effect for School Schedule -->
+
+		<!-- Show Date JS Script Not Used Anymore. But it works fine.
+
+		<script type="text/javascript">
+
+		$(document).ready(function() {
+		var now = new Date();
+		var Weekday = new Array("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday");
+		var Month = new Array("January","February","March","April","May","June","July","August","September","October","November","December");
+		$x = Weekday[now.getDay()]+" "+Month[now.getMonth()]+" "+now.getDate()+" "+now.getFullYear();
+
+		document.getElementById("id01").innerHTML = $x;
+		});
+		</script>
+
+		End Date JS -->
+
+		&nbsp;
+
+		<!-- Current Time JS -->
+
+		<script type="text/javascript">
+			setInterval(function() {
+				$(document).ready(function() {
+					var a_p = "";
+					var d = new Date();
+					var curr_hour = d.getHours();
+					if (curr_hour < 12) {
+						a_p = "AM";
+					} else {
+						a_p = "PM";
+					}
+					if (curr_hour == 0) {
+						curr_hour = 12;
+					}
+					if (curr_hour > 12) {
+						curr_hour = curr_hour - 12;
+					}
+
+					var curr_min = d.getMinutes();
+
+					curr_min = curr_min + "";
+
+					if (curr_min.length == 1) {
+						curr_min = "0" + curr_min;
+					}
+
+					$y = curr_hour + ":" + curr_min + " " + a_p;
+					document.getElementById("id02").innerHTML = $y;
+				});
+			}, 500);
+			//-->
+		</script>
+		<!-- End Current Time JS -->
+
+		<script type = "text/javascript">
+
+			var user_list_timeout;
+			var current_list_timeout;
+			var seconds_between_user_list_update = 60000;
+			var seconds_between_todo_list_update = 5000;
+			var request;
+
+			function displayLogin() {
+			var theForm = "<form>Name: <input type='text' name='name' style='height:22px'><br> " +
+			"Password: <input type='password' name='password' style='height:22px'> " +
+			"<input type='button' value='submit' onClick='doLogin(this.form);'><br>"
+			document.getElementById("loginArea").innerHTML = theForm;
+			}
+
+			function doLogin(my_form) {
+			readFileDoFunction("userInfo.xml", "GET", function() {
+			if (request.readyState == 4) {
+			if (request.status == 200) {
+			processLogin(request.responseXML, my_form);
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML =
+			"Sorry, there was a problem with the server.";
+			}
+			}
+			}
+			);
+			}
+
+			function getUser(user_info, user_name) {
+			var users = user_info.getElementsByTagName("user");
+			var count = 0;
+			var found_user = null;
+			var this_user;
+			while ((count < users.length) && (found_user == null)) {
+			this_user = users[count];
+			this_name = getFirstValue(this_user, "name");
+			//this_user.getElementsByTagName("name")[0].firstChild.nodeValue;
+			if (this_name == user_name) {
+			found_user = this_user;
+			}
+			count++;
+			}
+			return found_user;
+			}
+
+			function processLogin(user_info, my_form) {
+			var user_name = my_form.elements["name"].value;
+			var user_password = my_form.elements["password"].value;
+			var this_password_node;
+			var success = false;
+			var this_password;
+			var this_user = getUser(user_info, user_name);
+			if (this_user != null) {
+			this_password = getFirstValue(this_user, "password");
+			if (user_password == this_password) {
+			success = true;
+			}
+			}
+
+			if (success == true) {
+			document.cookie = "user=" + user_name;
+			displayHomeInformation(user_name);
+			document.getElementById("contentArea").innerHTML = "";
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML +=
+			"<font color='red'><br>Login error; please try again.</font>";
+			}
+			}
+
+			function displayHomeInformation(user_name) {
+			document.getElementById("loginArea").innerHTML =
+			"<h3>Welcome, "  + user_name + ". <br>" +
+			"<a href='#' onClick='logout(); return false'>logout</a> </h3>";
+			displayLegalLists(user_name);
+			}
+
+			function readFileDoFunction(file_name, request_type, the_function) {
+			if (window.XMLHttpRequest) {
+			request = new XMLHttpRequest();
+			}
+			else {
+			request = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+
+			var theURL = "/bb/todolist/readXMLFile.php?fileName=" + file_name + "&t=" + new Date().getTime();
+			if (request) {
+			request.open(request_type, theURL);
+			request.onreadystatechange = the_function;
+			request.send(null);
+			}
+
+			else {
+			document.getElementById("errorDiv").innerHTML =
+			"Sorry, you must update your browser before seeing Ajax in action.";
+			}
+			}
+
+			function saveFileDoFunction(file_name, the_contents, the_function) {
+			if (window.XMLHttpRequest) {
+			request = new XMLHttpRequest();
+			}
+			else {
+			request = new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			var the_url = "/bb/todolist/saveXMLFile.php?t=" + new Date().getTime();
+			var the_message = "fileName=" + file_name + "&contents=" + the_contents;
+			if (request) {
+			request.open("POST", the_url);
+			request.setRequestHeader("Content-type",
+			"application/x-www-form-urlencoded; charset=UTF-8");
+			request.onreadystatechange = the_function;
+			request.send(the_message);
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML =
+			"Sorry, you must update your browser before seeing Ajax in action.";
+			}
+			}
+
+			function displayLegalLists(user_name) {
+			readFileDoFunction("userInfo.xml", "GET", function() {
+			if (request.readyState == 4) {
+			if (request.status == 200) {
+			var last_modified = request.getResponseHeader("Last-Modified");
+			var last_modified_date = new Date(last_modified);
+			displayLists(request.responseXML, user_name, last_modified_date.getTime());
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML =
+			"Sorry, your lists could not be displayed due to a problem with " +
+			"the server.";
+			}
+			}
+			}
+			);
+			}
+
+			function displayLists(user_info, user_name, last_modified_date) {
+			var this_user = getUser(user_info, user_name);
+			var display_info = "";
+			var this_link;
+			var this_list;
+			if (this_user != null) {
+			var lists_element = this_user.getElementsByTagName("lists")[0];
+			var lists = lists_element.getElementsByTagName("list");
+			for (var loop = 0; loop < lists.length; loop++) {
+			this_list = lists[loop].firstChild.nodeValue;
+			this_link = "<a href=\"#\" onClick=\"readyDisplayList('" +
+			this_list + "'); return false;\">" + this_list + "</a>";
+			display_info += this_link + "<br>";
+			}
+			document.getElementById("listArea").innerHTML = display_info;
+			user_list_timeout =
+			setTimeout("updateUserIfChanged(" + last_modified_date + ",'" +
+			user_name + "')", seconds_between_user_list_update);
+			}
+			}
+
+			function updateUserIfChanged(current_last_modified, user_name) {
+			readFileDoFunction("userInfo.xml", "HEAD", function() {
+			if (request.readyState == 4) {
+			if (request.status == 200) {
+			var last_modified = request.getResponseHeader("Last-Modified");
+			var last_modified_date = new Date(last_modified).getTime();
+			if (last_modified_date != current_last_modified) {
+			displayLegalLists(user_name);
+			}
+			user_list_timeout = setTimeout("updateUserIfChanged(" +
+			last_modified_date + ",'" + user_name + "')",seconds_between_user_list_update);
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML =
+			"Problem updating user " + request.status;
+			}
+			}
+			}
+			);
+			}
+
+			function updateTodoIfChanged(current_last_modified, list_name) {
+			readFileDoFunction(list_name + ".xml", "HEAD", function() {
+			if (request.readyState == 4) {
+			if (request.status == 200) {
+			var last_modified = request.getResponseHeader("Last-Modified");
+			var last_modified_date = new Date(last_modified).getTime();
+			if (last_modified_date != current_last_modified) {
+			readyDisplayList(list_name);
+			}
+			todo_list_timeout = setTimeout("updateTodoIfChanged(" +
+			last_modified_date + ",'" + list_name + "')", seconds_between_todo_list_update);
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML =
+			"Problem updating To Do list " + request.status;
+			}
+			}
+			}
+			);
+			}
+
+			function addNewItem(the_form, list_name) {
+			var file_name = list_name + ".xml";
+			readFileDoFunction(file_name, "GET", function() {
+			if (request.readyState == 4) {
+			if (request.status == 200) {
+			addNewToFile(request.responseXML, the_form.newItem.value,
+			list_name);
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML = "Sorry, new item could not be added to To Do list for" + list_name +
+			" due to a problem with the server.";
+			}
+			}
+			}
+			);
+			}
+
+			function addNewToFile(the_document, new_contents, list_name) {
+			var open_items = getItems(the_document,"openitems");
+			var done_items = getItems(the_document,"doneitems");
+			var high_number = getHighValue(the_document);
+			var new_number = high_number + 1;
+			var new_item = document.createElement("item");
+			var new_item_number = document.createElement("number");
+			var new_item_content = document.createElement("contents");
+			new_item_number.appendChild(document.createTextNode(new_number));
+			new_item_content.appendChild(document.createTextNode(new_contents));
+			new_item.appendChild(new_item_number);
+			new_item.appendChild(new_item_content);
+			open_items.push(new_item);
+			saveAndReload(open_items, done_items, list_name);
+			}
+
+			function getHighValue(the_document) {
+			var high_number = 0;
+			var this_number = 0;
+			var items = the_document.getElementsByTagName("item");
+			for (var loop = 0; loop < items.length; loop++) {
+			this_number = parseInt(getFirstValue(items[loop], "number"));
+			if (this_number > high_number) {
+			high_number = this_number;
+			}
+			}
+			return high_number;
+			}
+
+			function readyDisplayList(list_name) {
+			var file_name = list_name + ".xml";
+			readFileDoFunction(file_name, "GET", function() {
+			if (request.readyState == 4) {
+			if (request.status == 200) {
+			var last_modified = request.getResponseHeader("Last-Modified");
+			var last_modified_date = new Date(last_modified);
+			displayList(request.responseXML, last_modified_date.getTime());
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML = "Sorry, could not display To Do list " + list_name +
+			" due to a problem with the server.";
+			}
+			}
+			}
+			);
+			}
+
+			function displayList(the_list, last_modified_date) {
+			var list_name = getFirstValue(the_list, "name");
+			var intro_text = "<h4 id='list_section'>Looking at list: " + list_name + "</h4>";
+			var pending_display = "<h3>Still Pending:<br></h4><ul>";
+			var open_item_element = the_list.getElementsByTagName("openitems")[0];
+			var open_items = open_item_element.getElementsByTagName("item");
+			for (var loop = 0; loop < open_items.length; loop++) {
+			this_item = open_items[loop];
+			this_contents = getFirstValue(this_item, "contents");
+			this_number = getFirstValue(this_item, "number");
+			pending_display += "<li id = 'pend_list'><input type='checkbox' " +
+			"onClick=\"readyMarkDone('" + list_name + "'," +
+			this_number + ");\"> " + this_contents;
+			}
+			pending_display += "</ul>";
+			var done_display = "<h3>Completed:<br></h3><ul><del>";
+			var open_item_element = the_list.getElementsByTagName("doneitems")[0];
+			var open_items = open_item_element.getElementsByTagName("item");
+			for (var loop = 0; loop < open_items.length; loop++) {
+			this_item = open_items[loop];
+			this_contents = getFirstValue(this_item, "contents");
+			this_number = getFirstValue(this_item, "number");
+			done_display += "<li id='completed'><input type='checkbox' " +
+			"onClick=\"readyMarkUndone('" + list_name + "'," + this_number +
+			");\"> " + this_contents;
+			}
+			done_display += "</del></ul>";
+			document.getElementById("contentArea").innerHTML = intro_text + pending_display + done_display;
+			document.getElementById("contentArea").innerHTML +=
+			"<br><p> <form><strong>Add New Item: </strong><input type='text' style='height:24px' name='newItem'>" +
+			"<input type=\"button\" value=\"add\" " +
+			"onClick=\"addNewItem(this.form, '" + list_name + "');\"></form>";
+			todo_list_timeout = setTimeout("updateTodoIfChanged(" + last_modified_date + ",'" +
+			list_name + "')", seconds_between_todo_list_update);
+			}
+
+			function getFirstValue(my_element, child) {
+			return my_element.getElementsByTagName(child)[0].firstChild.nodeValue;
+			}
+
+			function readyMarkDone(list_name, the_item) {
+			var file_name = list_name + ".xml";
+			readFileDoFunction(file_name, "GET", function() {
+			if (request.readyState == 4) {
+			if (request.status == 200) {
+			markDone(request.responseXML, the_item, list_name);
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML =
+			"Sorry, this item could not be marked done due to a problem " +
+			"with the server.";
+			}
+			}
+			}
+			);
+			}
+
+			function readyMarkUndone(list_name, the_item) {
+			var file_name = list_name + ".xml";
+			readFileDoFunction(file_name, "GET", function() {
+			if (request.readyState == 4) {
+			if (request.status == 200) {
+			markUndone(request.responseXML, the_item, list_name);
+			}
+			else {
+			document.getElementById("errorDiv").innerHTML =
+			"Sorry, this item could not be marked undone due to a problem " +
+			"with the server.";
+			}
+			}
+			}
+			);
+			}
+
+			function markDone(the_document, the_item, list_name, last_modified_date) {
+			var open_items = getItems(the_document,"openitems");
+			var done_items = getItems(the_document,"doneitems");
+			var this_number;
+			var found_item = null;
+			var count = 0;
+			while ((count < open_items.length) && (found_item == null)) {
+			this_number = getFirstValue(open_items[count], "number");
+			if (this_number == the_item) {
+			found_item = open_items[count];
+			}
+			else {
+			count++;
+			}
+			}
+			if (found_item != null) {
+			open_items.splice(count, 1);
+			done_items.push(found_item);
+			saveAndReload(open_items, done_items, list_name);
+			}
+			}
+
+			function markUndone(the_document, the_item, list_name) {
+			var open_items = getItems(the_document,"openitems");
+			var done_items = getItems(the_document,"doneitems");
+			var this_number;
+			var found_item = null;
+			var count = 0;
+			while ((count < done_items.length) && (found_item == null)) {
+			this_number = getFirstValue(done_items[count], "number");
+			if (this_number == the_item) {
+			found_item = done_items[count];
+			}
+			else {
+			count++;
+			}
+			}
+			if (found_item != null) {
+			done_items.splice(count, 1);
+			open_items.push(found_item);
+			saveAndReload(open_items, done_items, list_name);
+			}
+			}
+
+			function getItems(the_document, the_item_type) {
+			var the_items_array = new Array();
+			var item_elements = the_document.getElementsByTagName(the_item_type)[0];
+			var items = item_elements.getElementsByTagName("item");
+			for (var loop = 0; loop < items.length; loop++) {
+			the_items_array[loop] = items[loop];
+			}
+			return the_items_array;
+			}
+
+			function saveAndReload(open_items, done_items, list_name) {
+			var the_string = "<?xml version='1.0' ?>
+				";
+				the_string += "<list>";
+				the_string += "<name>" + list_name + "</name>";
+				the_string += getItemString("openitems", open_items);
+				the_string += getItemString("doneitems", done_items);
+				the_string += "</list>";
+				var file_name = list_name + ".xml";
+				saveFileDoFunction(file_name, the_string, function() {
+				if (request.readyState == 4) {
+				if ((request.responseText == "success") && (request.status == 200)) {
+				readyDisplayList(list_name);
+				}
+				else {
+				document.getElementById("errorDiv").innerHTML =
+				"Sorry, there was an error saving your list. " +
+				request.responseText;
+				}
+				}
+				}
+				);
+				}
+
+				function getItemString(item_list_name, item_list) {
+				var the_string = "<" + item_list_name + ">";
+				for (var loop = 0; loop < item_list.length; loop++) {
+				the_string += "<item>";
+				the_string += "<number>" + getFirstValue(item_list[loop], "number") + "</number>";
+				the_string += "<contents>" +
+				getFirstValue(item_list[loop], "contents") + "</contents>";
+				the_string += "</item>";
+				}
+				the_string += "</" + item_list_name + ">";
+				return the_string;
+				}
+
+				function logout() {
+				var the_date = new Date("December 31, 1900");
+				var the_cookie_date = the_date.toGMTString();
+				var user_name = getNameFromCookie();
+				document.cookie = "user=" + escape(user_name) + ";expires=" + the_cookie_date;
+				clearTimeout(user_list_timeout);
+				clearTimeout(current_list_timeout);
+				window.location.reload();
+				}
+
+				function getNameFromCookie() {
+				// We have to parse the user_name variable because we are using php on page
+				// and that adds another cookie, so we must strip it out of user_name less we
+				//end up with an incorrect user_name
+				var cookieParts = null;
+				var user_name = null;
+				if (document.cookie != null) {
+				user_name = document.cookie.split("=")[1];
+				var pos = 0;
+				pos = user_name.search(";");
+
+				if (pos > 0) {
+				user_name = user_name.slice(0,pos);
+				}
+				if (user_name.length > 20) {
+				user_name = null;
+				}
+				}
+				return user_name;
+				}
+
+				function checkIfLoggedIn() {
+				var user_name = getNameFromCookie();
+				if (user_name != null) {
+				displayHomeInformation(user_name);
+				}
+				}
+
+				// Code to Toggle Content Area
+				$(document).ready(function(){
+				$("#contentSection").click(function(){
+				$("#contentArea").toggle(500);
+				});
+				});
+
+				// Code to Toggle GMail Messages Area
+				$(document).ready(function(){
+				$("#hide_messages").click(function(){
+				$(".table_messages_hide").toggle(400);
+				});
+				});
+
+				// Clear Done Items Function
+				function clear_done_items()  {
+
+				var xmlhttp;
+				if (window.XMLHttpRequest) {
+				// code for IE7+, Firefox, Chrome, Opera, Safari
+				xmlhttp=new XMLHttpRequest();
+				}
+				else {
+				// code for IE6, IE5
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+				}
+
+				xmlhttp.open("POST","todolist/clear_done_items.php",true);
+				xmlhttp.send();
+
+				}
+
+				//Todo list Clear Confirmation box
+
+				function CanContinue () {
+				var temp = document.getElementById("list_section");
+				var temp_list_name = temp.innerHTML;
+				var str_len = temp_list_name.length;
+				var list_name = temp_list_name.slice(17,str_len);
+				var user_name = getNameFromCookie();
+				if (user_name != list_name) {
+				alert("Warning: You Must be Logged in as this User, " + list_name + ", to Delete the Completed Items List");
+				}
+
+				else {
+				var confRet = window.confirm ("Do you want to continue the operation?");
+				if (confRet) {
+				clear_done_items();
+				}
+
+				}
+				}
+
+		</script>
+		<!--JS code for Searching Staff_Info database Using AJAX-->
+
+		<script>
+			function showUser() {
+				var str = document.getElementById("myText").value;
+				if (str == "") {
+					document.getElementById("txtHint").innerHTML = "";
+					return;
+				} else {
+					if (window.XMLHttpRequest) {
+						// code for IE7+, Firefox, Chrome, Opera, Safari
+						xmlhttp = new XMLHttpRequest();
+					} else {
+						// code for IE6, IE5
+						xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+					}
+					xmlhttp.onreadystatechange = function() {
+						if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+							document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+						}
+					}
+					xmlhttp.open("GET", "getuser.php?q=" + str, true);
+					xmlhttp.send();
+				}
+			}
+		</script>
+
+	</head>
+
+	<body onLoad = "checkIfLoggedIn();">
+
+		<script>
+			checkIfLoggedIn()
+		</script>
+
+		<script src="bootstrap/js/alert.js"></script>
+		<nav class="navbar navbar-static" style="left: 2px; top: -95px">
+			<div class="container">
+				<a class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse"> <span class="glyphicon glyphicon-chevron-down"></span> </a>
+				<div class="nav-collapse collase">
+					<ul class="nav navbar-nav">
+						<li>
+							<a href="http://newscheduler.scarsdaleschools.org/Web/index.php" target="_tab">phpScheduleIt Web</a>
+						</li>
+						<li>
+							<a href="mailto:someone@scarsdaleschools.org?Subject=Follow%20Up%20on%20Trouble" target="_top">Send an EMail</a>
+						</li>
+						<li>
+							<a href="#" id="trigger">Teacher Schedule</a>
+							<div id="schedulePDF" style="display:none">
+								<div>
+
+									<iframe src="assets/teacherSchedules.pdf" align="center" height="950px" width="1200"></iframe>
+
+								</div>
+							</div>
+						</li>
+						<li>
+							<a href="#" id="trigger_rm_usage">Room Usage</a>
+							<div id="room_usage" style="display:none">
+								<div>
+
+									<iframe src="assets/room_usage.pdf" align="center" height="950px" width="1200"></iframe>
+
+								</div>
+							</div>
+						</li>
+
+					</ul>
+
+					<ul class="nav navbar-right navbar-nav">
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-down"></i></a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="login.html">Administration Page Login</a>
+								</li>
+								<li>
+									<a href="#gmail_section">Read GMail</a>
+								</li>
+								<li class="divider"></li>
+								<li>
+									<a id="opener" href="#">About</a>
+								</li>
+								<div id="dialog" title="About Technology BB">
+									© 2015 by Alan Killian
+									<br>
+									v1.3
+								</div>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<!-- /.navbar -->
+
+		<!---------------------------- Div Container for HTMl Body ------------------------------------------------------>
+
+		<div class="container-fluid" style="position:relative; bottom: 150px;">
+
+			<!----------------------- Div Container for Time The Z-index keeps element on top of all other elements when scrolling --------------->
+			<div class="container-fluid" style="position:fixed;top:220px;z-index:100;">
+				<div class="row">
+					<div class="col col-sm-12">
+
+						<strong><span class="pull-right" id="id02"   style="margin-left:1320px;"></span></strong>
+
+					</div>
+				</div>
+			</div>
+
+			<!----------------------------- Div Container for  Logo/Responsive Calendar --------------------------------->
+			<br>
+			<br>
+			<header class="masthead"></header>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col col-sm-7">
+						<h1>SHS Technology Dept Bulletin Board</h1>
+						<p class="lead">
+							A Virtual Gathering Hole for the Technology Dept
+							<br>
+							<br>
+						</p>
+
+						<div class="col col-sm-2">
+							<!-- HTML markup for JQuery hover code for Zoomin/out of School Schedule. -------------------->
+							<img id="pic" src="assets/schedule.jpg" width="130%">
+						</div>
+
+					</div>
+
+					<!-- Responsive calendar - START -->
+
+					<!-- Responsive Calendar Markup -->
+					<div class="responsive-calendar col col-sm-3 pull-right" style="left: 0px; top: 0px" >
+						<div class="controls">
+							<a class="pull-left" data-go="prev">
+							<div class="btn">
+								<i class="icon-chevron-left"></i>
+							</div></a>
+							<h4><span data-head-year></span><span data-head-month></span></h4>
+							<a class="pull-right" data-go="next">
+							<div class="btn">
+								<i class="icon-chevron-right"></i>
+							</div></a>
+						</div>
+						<hr/>
+						<div class="day-headers">
+							<div class="day header">
+								Sun
+							</div>
+							<div class="day header">
+								Mon
+							</div>
+							<div class="day header">
+								Tue
+							</div>
+							<div class="day header">
+								Wed
+							</div>
+							<div class="day header">
+								Thu
+							</div>
+							<div class="day header">
+								Fri
+							</div>
+							<div class="day header">
+								Sat
+							</div>
+						</div>
+						<div class="days" data-group="days">
+							<!-- The place where days will be generated by JS-->
+						</div>
+					</div>
+
+					<!-- Responsive Calendar JS --------------------------------->
+
+					<script>
+						$(document).ready(function() {
+							$('.responsive-calendar').responsiveCalendar({
+								startFromSunday : true,
+							});
+							//Let's make the calendar resizable.
+							$(".responsive-calendar").resizable({
+								animate : true,
+								aspectRatio : true,
+								containment : "parent",
+								ghost : true,
+								handles : "all"
+							});
+						});
+					</script>
+
+					<!-- Responsive calendar - END ------------------------------------->
+
+				</div>
+
+			</div>
+			<br>
+			<br>
+
+			<!----------------------------------------------------------- Div for Channels/Main Picture ------------------------------------------------------------------------>
+			<div class="container-fluid">
+				<div class="row">
+
+					<div class="col col-sm-3 pull-left">
+
+						<ul class="nav nav-stacked">
+							<li style="left: 0px; top: 0px">
+								<h3 class="highlight">Channels <i class="glyphicon glyphicon-dashboard pull-right"></i></h3>
+							</li>
+							<li>
+								<a href="http://www.scarsdaleschools.k12.ny.us/Domain/65" target="_tab">Scarsdale Home Page</a>
+							</li>
+							<li>
+								<a href="http://172.16.178.9/shs" target="_tab">SHS Drupal Site</a>
+							</li>
+						</ul>
+						<div class="accordion" id="accordion2">
+							<div class="accordion-group">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"><h2> Links</h2> </a>
+
+								</div>
+								<div id="collapseOne" class="accordion-body collapse in">
+									<div class="accordion-inner">
+										<ul>
+											<li>
+												<a href="http://shs-6.scarsdaleschools.k12.ny.us/helpdesk/WebObjects/Helpdesk.woa" target="_tab">Web Help Desk</a>
+											</li>
+											<br>
+											<li>
+												<a href="https://admin.google.com/AdminHome?pli=1&fral=1" target="_tab">Google Admin Console</a>
+											</li>
+											<li>
+												<a href="https://ic.scarsdaleschools.k12.ny.us/campus/scarsdale.jsp" target="_tab">Infinite Campus</a>
+											</li>
+											<li>
+												<a href="https://sufsd-iprint.scarsdaleschools.org/ipp" target="_tab">AD iPrint</a>
+											</li>
+											<br>
+											<li>
+												<a href="https://docs.google.com/spreadsheets/d/1VT4yD8LfwvlVMB2lOJ44VU3rrY2SMSYnLavYwI4a5Jw/edit#gid=842458658" target="_tab">Equipment Loan Log</a>
+											</li>
+											<li>
+												<a href="https://docs.google.com/a/scarsdaleschools.org/forms/d/1Sw1MR9_i0xQl6qv_QJlh6AmQ-yCbbpRooRjyljhPoa8/viewform" target="_tab">Equipment Form</a>
+											</li>
+											<li>
+												<a href="https://172.16.160.4:4343/screens/wms/wms.login" target="_tab">WiFi Admin/Monitor Pg</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="accordion-group">
+								<div class="accordion-heading">
+									<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo"> Footnote </a>
+								</div>
+								<div id="collapseTwo" class="accordion-body collapse">
+									<div class="accordion-inner">
+										<p>
+											More Technology items to come
+										</p>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+					<div class="col col-sm-9 pull-right">
+						<div class="panel">
+							<h1>Latest News and Updates</h1>
+
+							<div class="col col-sm-8">
+								<img src="assets/scarsdalehs.jpg" class="img-responsive">
+							</div>
+							<div class="col col-sm-4">
+								<img src="assets/technology.jpg" class="img-responsive">
+								<h4>Technology</h4>
+								<hr>
+								<img src="assets/technology2.jpg" class="img-responsive">
+								<h4>Innovation</h4>
+							</div>
+						</div>
+					</div>
+
+					<br>
+					<br>
+					<br>
+					<br>
+
+					<!------------------------------------------------------------------ ToDo/Staff Info/GMail Div 	------------------------------------------------------------------>
+					<div class="container-fluid">
+						<div class="row">
+
+							<div class="col col-sm-3 pull-left" style="left: 0px; top: 0px">
+
+								<!-- Todo Markup -->
+								<div id = "errorDiv" style = "color:red"></div>
+
+								<h2>SHS Todo List Section</h2>
+								<div id = "loginArea">
+									<h3>Welcome! Please sign in to see your To Do lists.<a href = "#" onClick = "displayLogin(); return false;">
+									<br>
+									login</a></h3>
+								</div>
+
+								<div>
+									<h2 id="contentSection">Content Section (Click to toggle)</h2>
+									<div id = "contentArea"></div>
+
+									<button type="button" class="btn btn-primary btn-lg" onclick="CanContinue()">
+										Clear Completed Items
+									</button>
+								</div>
+
+								<h2><strong>To Do Lists You Can Access</strong></h2>
+								<div id = "listArea"></div>
+							</div>
+							<!--    End ToDo Markup            -->
+
+						</div>
+					</div>
+
+					<!-- Section for mail.php ----------------------------------------->
+					<div class="col-sm-9 pull-right">
+
+						<div class="container">
+							<div class="row">
+								<div class="col col-sm-12 " id="gmail_section">
+									<?php
+									require 'mail.php';
+									?>
+									<br>
+									<br>
+									<hr>
+
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!---- End GMail Div --------------------->
+
+				</div>
+			</div>
+
+			<!-- Div Container for Staff Info/OpenJS Grid Table ------------------------------------------------>
+
+			<div class="container-fluid">
+				<div class="row">
+					<!-- Markup for the Staff_Info/GMail -->
+
+					<div class="col col-sm-4 pull-left" id="adj_staff_info" style="position:relative; bottom: 175px;">
+
+						<br>
+						<br>
+						<h2>Staff Directory</h2>
+
+						Staffer Name:
+						<input type="text" style="min-height:25px" id="myText" value="">
+
+						<button onclick="showUser()">
+							Search
+						</button>
+
+						<br>
+						<br>
+						<b>Results:</b>
+						<div id="txtHint"></div>
+
+						<!--End Markup for Staff_Info area-->
+					</div>
+
+					<!---------------------------- OpenJS Grid Markup ---------------->
+
+					<div class="col-sm-8 pull-right table-responsive" style="position:relative; bottom: 50px;">
+						<br>
+						<br>
+
+						<h2>Memos</h2>
+						<!--Note that adding  type="text" to a table column makes it editable.----------->
+
+						<table class="table" action="message_table_ajax.php">
+							<thead>
+								<tr>
+									<th col="crnt_date" >Date/Time Entered</th>
+									<th col="prsn_from" >From:</th>
+									<th col="note" type="text">Message/Memo</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>04/16/18</td>
+									<td>Alan</td>
+									<td>Meeting at 3pm. </td>
+								</tr>
+							</tbody>
+						</table>
+
+						<!-- End OpenJS Grid Markup ------------------------------------------------------------------------>
+
+						<!-- Add a Message Modal for here  to Enter a New Message ------------------------------------------------------------------------->
+
+						<!-- Button trigger modal -->
+						<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+							Add a Memo
+						</button>
+
+						<!-- Modal -->
+						<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							<div class="modal-dialog" role="document">
+								<div class="modal-content">
+									<div class="modal-header">
+										<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+										<h3 class="modal-title" id="myModalLabel">Add a Memo</h3>
+									</div>
+									<!--        Form Goes here for Modal Dialog-->
+									<div class="modal-body">
+										<h2>Memo</h2>
+
+										<form role="form" action="add.php" method="post">
+											<div class="row">
+												<div class="form-group col-lg-4">
+													<label for="from">From:</label>
+													<input type="text" class="form-control" id="prsn_from" name="from_val" required placeholder="Message From">
+												</div>
+											</div>
+											<div class="row">
+												<div class="form-group col-lg-11">
+													<label for="note">Enter Message:</label>
+													<textarea class="form-control" id="note" name="note_val" required placeholder="Enter Your Message"></textarea>
+												</div>
+											</div>
+
+											<div class="modal-footer pull-left">
+												<button type="button" class="btn btn-default" data-dismiss="modal">
+													Close
+												</button>
+												<button type="submit" id="newData" class="btn  btn-primary btn-md">
+													Submit
+												</button>
+											</div>
+										</form>
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+					<br/>
+					<br/>
+					<br/>
+
+					<!-- Div for NewsTicker ---------------------------------------------------->
+
+					<div class="col col-sm-12" style='margin-left:250px' text-center>
+
+						<!-- Code for Newsticker.--------------------->
+
+						<div class="row ticker-text">
+
+							<p id="show"></p>
+							<div class="panel">
+								<div class="panel-body style='margin-right:50px' ">
+
+									<?php
+									$hm = "/var/www/bb/webticker";
+									$hm2 = "localhost/bb/webticker";
+									include "$hm/hhnt.php";
+									?>
+
+								</div>
+							</div>
+
+						</div>
+
+						<!-- End Newsticker code. Aren't reusable scripts    great.-------------------------------->
+
+						<h3 style='margin-left:155px'>More To Come So Keep Checking Back at the SHS Technology Board</h3>
+
+						<hr>
+
+						<h1 style='margin-left:370px'><a href="#"><i class="glyphicon glyphicon-user"></i> <i class="glyphicon glyphicon-chevron-up"></i></a></h1>
+
+					</div>
+
+					<!--- End Div for HTML Body -------------------------->
+				</div>
+
+				<!-- script references ------------------------------------->
+				<!--This causes table not to load if used.<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>-->
+				<script src="js/bootstrap.min.js"></script>
+				<script src="js/scripts.js"></script>
+
+	</body>
+</html>

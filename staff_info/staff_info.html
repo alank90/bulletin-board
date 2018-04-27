@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title>Staff Info Page</title>
+
+<script>
+function showUser() {
+    var str = document.getElementById("myText").value;
+    if (str == "") {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                document.getElementById("txtHint").innerHTML = xmlhttp.responseText;
+            }
+        }
+        xmlhttp.open("GET","getuser.php?q="+str,true);
+        xmlhttp.send();
+    }
+}
+</script>
+
+
+</head>
+
+<body>
+
+Teacher Name: <input type="text" id="myText" value="">
+
+<p>Click the button to Search for Teacher Info</p>
+
+<button onclick="showUser()">Search</button>
+
+<br>
+<br>
+<br>
+<div id="txtHint"><b>Teacher info will be listed here...</b></div>
+
+</body>
+
+</html>
